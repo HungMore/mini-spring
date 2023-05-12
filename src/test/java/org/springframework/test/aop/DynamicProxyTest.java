@@ -52,10 +52,11 @@ public class DynamicProxyTest {
 		advisedSupport.setProxyTargetClass(false);
 		WorldService proxy = (WorldService) new ProxyFactory(advisedSupport).getProxy();
 		proxy.explode();
-
+		System.out.println(proxy.getClass());
 		// 使用CGLIB动态代理
 		advisedSupport.setProxyTargetClass(true);
 		proxy = (WorldService) new ProxyFactory(advisedSupport).getProxy();
 		proxy.explode();
+		System.out.println(proxy.getClass());
 	}
 }
