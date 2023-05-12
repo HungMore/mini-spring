@@ -93,6 +93,7 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
 	protected void initApplicationEventMulticaster() {
 		ConfigurableListableBeanFactory beanFactory = getBeanFactory();
 		applicationEventMulticaster = new SimpleApplicationEventMulticaster(beanFactory);
+		// 这个 applicationEventMulticaster 是会放入到容器的哦！
 		beanFactory.addSingleton(APPLICATION_EVENT_MULTICASTER_BEAN_NAME, applicationEventMulticaster);
 	}
 
