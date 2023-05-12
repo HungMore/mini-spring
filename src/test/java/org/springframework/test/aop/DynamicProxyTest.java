@@ -36,12 +36,16 @@ public class DynamicProxyTest {
 	@Test
 	public void testJdkDynamicProxy() throws Exception {
 		WorldService proxy = (WorldService) new JdkDynamicAopProxy(advisedSupport).getProxy();
+		// class com.sun.proxy.$Proxy5
+		System.out.println(proxy.getClass());
 		proxy.explode();
 	}
 
 	@Test
 	public void testCglibDynamicProxy() throws Exception {
 		WorldService proxy = (WorldService) new CglibAopProxy(advisedSupport).getProxy();
+		// class org.springframework.test.service.WorldServiceImpl$$EnhancerByCGLIB$$9062725e
+		System.out.println(proxy.getClass());
 		proxy.explode();
 	}
 }
