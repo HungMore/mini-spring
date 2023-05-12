@@ -24,12 +24,13 @@ public abstract class AbstractApplicationContext extends DefaultResourceLoader i
 		ConfigurableListableBeanFactory beanFactory = getBeanFactory();
 
 		//在bean实例化之前，执行BeanFactoryPostProcessor
+		// 这里是通过 getBean 的方式获取 BeanFactoryPostProcessor 的，所以 BeanFactoryPostProcessor 类型的 bean 会比较早初始化！
 		invokeBeanFactoryPostProcessors(beanFactory);
 
-		//BeanPostProcessor需要提前与其他bean实例化之前注册
+		//BeanPostProcessor需要提前于其他bean实例化之前注册。因为它们也是通过 getBean 的方式获取的！
 		registerBeanPostProcessors(beanFactory);
 
-		//提前实例化单例bean
+		//提前实例化单例bean，所以 BeanFactory 是懒加载bean，ApplicationContext 是提前加载完毕的。
 		beanFactory.preInstantiateSingletons();
 	}
 
