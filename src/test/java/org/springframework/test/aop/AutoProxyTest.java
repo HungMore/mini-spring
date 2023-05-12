@@ -17,5 +17,8 @@ public class AutoProxyTest {
 		//获取代理对象
 		WorldService worldService = applicationContext.getBean("worldService", WorldService.class);
 		worldService.explode();
+		// todo ? 每次拿到的都是新的一个bean？这合理吗？
+		WorldService worldService2 = applicationContext.getBean("worldService", WorldService.class);
+		worldService2.explode();
 	}
 }
