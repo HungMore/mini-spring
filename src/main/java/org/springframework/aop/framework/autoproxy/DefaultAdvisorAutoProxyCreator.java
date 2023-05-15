@@ -24,6 +24,7 @@ public class DefaultAdvisorAutoProxyCreator implements InstantiationAwareBeanPos
 
 	private DefaultListableBeanFactory beanFactory;
 
+	// 三级缓存主要是靠这个的啦
 	private Set<Object> earlyProxyReferences = new HashSet<>();
 
 	@Override
